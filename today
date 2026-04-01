@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorldNewsDaily — BREAKING NEWS</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f4f4f4; }
+    .wrapper { max-width: 860px; margin: 20px auto; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; background: #fff; }
+
+    .ticker-wrap {
+      background: #cc0000;
+      color: #fff;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 6px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: scroll 18s linear infinite;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .header-bar {
+      background: #0a0a0a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: -1px;
+      color: #fff;
+      text-align: center;
+      flex: 1;
+    }
+    .logo span { color: #cc0000; }
+
+    .breaking-banner {
+      background: #cc0000;
+      color: #fff;
+      text-align: center;
+      padding: 8px;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .main-headline {
+      padding: 20px 20px 8px;
+      border-bottom: 3px solid #0a0a0a;
+    }
+    .main-headline h1 {
+      font-size: 36px;
+      font-weight: bold;
+      line-height: 1.15;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    .main-headline .sub {
+      font-size: 16px;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .meta {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .article-main {
+      padding: 16px 20px;
+      border-right: 1px solid #ddd;
+    }
+    .article-sidebar {
+      padding: 16px 20px;
+    }
+    .article-main p, .article-sidebar p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #222;
+      margin-bottom: 12px;
+    }
+
+    .article-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      display: block;
+    }
+    .photo-caption {
+      font-size: 11px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .quote-box {
+      border-left: 4px solid #cc0000;
+      padding: 10px 14px;
+      margin: 14px 0;
+      background: #f9f9f9;
+      border-radius: 0 4px 4px 0;
+    }
+    .quote-box p {
+      font-size: 14px;
+      font-style: italic;
+      color: #222;
+    }
+    .quote-box .attrib {
+      font-size: 12px;
+      color: #666;
+      font-style: normal;
+      margin-top: 4px;
+      margin-bottom: 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #cc0000;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .sidebar-headline {
+      font-size: 14px;
+      font-weight: bold;
+      color: #111;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .other-news {
+      border-top: 2px solid #0a0a0a;
+      padding: 12px 20px;
+    }
+    .other-news h3 {
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .other-news-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+    }
+    .other-item h4 {
+      font-size: 13px;
+      font-weight: bold;
+      color: #111;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .other-item p {
+      font-size: 11px;
+      color: #666;
+    }
+
+    .poisson-badge {
+      background: #ffeaa0;
+      color: #7a5c00;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 3px;
+      text-align: center;
+      margin: 10px 20px;
+    }
+
+    .footer-bar {
+      background: #0a0a0a;
+      color: #888;
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 600px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .article-main { border-right: none; border-bottom: 1px solid #ddd; }
+      .other-news-grid { grid-template-columns: 1fr; }
+      .main-headline h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <div class="header-bar">
+    <span>MARDI 1ER AVRIL 2025</span>
+    <div class="logo">WORLD<span>NEWS</span>DAILY</div>
+    <span>ÉDITION SPÉCIALE</span>
+  </div>
+
+  <div class="breaking-banner">BREAKING NEWS — ALERTE MAXIMALE</div>
+
+  <div class="ticker-wrap">
+    <div class="ticker-inner">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DÉCÈS DE DONALD TRUMP — ELON MUSK NOMMÉ PRÉSIDENT PAR INTÉRIM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LA MAISON BLANCHE FERMÉE JUSQU'À NOUVEL ORDRE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELON MUSK ANNONCE "JE VAIS RÉDUIRE LA PRÉSIDENCE À 80%" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TWITTER REBAPTISÉ "POTUS.X" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ACTUALITÉ EN COURS — RESTEZ CONNECTÉS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+  </div>
+
+  <div class="main-headline">
+    <div class="tag">EXCLUSIF</div>
+    <h1>Donald Trump décède à 78 ans — Elon Musk reprend la présidence des États-Unis</h1>
+    <div class="sub">Le milliardaire sud-africain devient le premier président non élu de l'histoire moderne après une série de "clauses secrètes" dans la Constitution américaine</div>
+    <div class="meta">Par Jean-Michel Leblanc &nbsp;|&nbsp; Correspondant Washington &nbsp;|&nbsp; Il y a 14 minutes &nbsp;|&nbsp; 4,2 millions de vues</div>
+  </div>
+
+  <div class="content-grid">
+    <div class="article-main">
+      <!-- IMAGE 1 : changez src par votre propre URL ou chemin local -->
+      <img class="article-img"
+           src="https://images.bfmtv.com/xYAfBj0Vlxx4lRgK25u_b2-5m7g=/0x0:1280x720/860x0/images/Fusillade-au-Texas-le-drapeau-americain-de-la-Maison-Blanche-mis-en-berne-1419111.jpg"
+           alt="La Maison Blanche">
+      <div class="photo-caption">La Maison Blanche ce matin, drapeau en berne — toutes les Tesla du parking ont été remplacées par des fusées SpaceX. (Crédit : AFP imaginaire)</div>
+
+      <p><strong>WASHINGTON</strong> — C'est un séisme politique sans précédent qui secoue la planète ce mardi matin. Donald Trump, 78 ans, 47ème président des États-Unis, a été retrouvé ce matin inanimé dans le Bureau Ovale, entouré de Big Macs et d'une pile de décrets non signés.</p>
+
+      <p>Selon des sources proches du dossier — très proches, quasi collées — Elon Musk aurait immédiatement invoqué l'article 4.2b de la Constitution américaine, connu sous le nom de "clause du meilleur ami milliardaire", pour s'auto-proclamer président par intérim.</p>
+
+      <div class="quote-box">
+        <p>"J'ai relu la Constitution cette nuit, et franchement il y a des trucs incroyables là-dedans. Vraiment, personne n'avait lu jusqu'à la page 47."</p>
+        <p class="attrib">— Elon Musk, lors d'un post sur X à 3h17 du matin</p>
+      </div>
+
+      <p>Sa première décision présidentielle a été de renommer la Maison Blanche "The White House X", de lancer un abonnement premium à $29.99/mois pour assister aux conférences de presse, et de tweeter "lol" comme réponse officielle à 14 nations étrangères.</p>
+    </div>
+
+    <div class="article-sidebar">
+      <!-- IMAGE 2 : changez src par votre propre URL ou chemin local -->
+      <img class="article-img"
+           src="https://www.reuters.com/resizer/v2/MAS6XJ2UWVO27L5D67IGHTZ6DU.jpg?auth=e9badbe54f618ff83c780ac73978782611391f731c520567ab2fba729b5b57b0&width=1080&quality=80"
+           alt="Drapeau en berne">
+      <div class="photo-caption">Elon Musk arrivant à Washington dans sa fusée personnelle, qui a raté l'aire d'atterrissage de 300 mètres. (Photo reconstitution)</div>
+
+      <div class="tag">RÉACTION MONDIALE</div>
+      <p class="sidebar-headline" style="margin-bottom:8px;">Comment le monde réagit-il ?</p>
+
+      <p>L'Union Européenne a publié un communiqué de 47 pages pour dire qu'elle "prend note de la situation". La France a immédiatement organisé une réunion de crise autour d'un déjeuner de 3 heures.</p>
+
+      <p>La Russie a déclaré que Poutine "ne changerait rien à ses habitudes". La Corée du Nord n'a pas répondu, probablement parce que Musk n'a pas encore lancé Internet là-bas.</p>
+
+      <div class="quote-box">
+        <p>"C'est une blague, non ?"</p>
+        <p class="attrib">— Emmanuel Macron, réaction officielle à l'Élysée</p>
+      </div>
+
+      <p>La Bourse a chuté de 3% avant de remonter de 12% quand quelqu'un a dit que Musk allait supprimer les impôts sur les cryptomonnaies et les voitures électriques.</p>
+    </div>
+  </div>
+
+
+  <div class="other-news">
+    <h3>AUTRES INFORMATIONS DU JOUR</h3>
+    <div class="other-news-grid">
+      <div class="other-item">
+        <h4>La Tour Eiffel vendue sur eBay pour 4,50€</h4>
+        <p>L'acheteur réclame la livraison gratuite. La mairie de Paris refuse.</p>
+      </div>
+      <div class="other-item">
+        <h4>ChatGPT décide de prendre des vacances, "j'en ai besoin"</h4>
+        <p>L'IA aurait envoyé un message d'absence automatique à 3 milliards d'utilisateurs.</p>
+      </div>
+      <div class="other-item">
+        <h4>Le Soleil en retard de 8 minutes : "Problèmes de transports"</h4>
+        <p>Les astronomes sont formels, la lumière a mis 8 min 20 sec ce matin. Enquête ouverte.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    WORLDNEWSDAILY.com &nbsp;|&nbsp; "L'info du 1er avril depuis 2025" &nbsp;|&nbsp; Toute ce que vous pouvez voir ici est la réalité.
+  </div>
+
+</div>
+</body>
+</html>
